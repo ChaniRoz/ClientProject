@@ -1,0 +1,10 @@
+
+git commit -m "finlly_project"
+git add README.md
+git branch -M main
+git commit -m "start-app"
+git init
+git commit -m "first commit"
+git remote add origin https://github.com/Rivkimi/finlly_project.git
+git push -u origin main
+git pull
