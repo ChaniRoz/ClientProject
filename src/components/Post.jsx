@@ -1,10 +1,10 @@
 import React from "react"
-import FormDialog from './AddNewItem'
+import AddPostDialog from './AddNewPost'
 import PostCard from './DrowSinglePost'
 const Post = () => {
     return (<>
         <h1>Post</h1>
-        <FormDialog/>
+        <AddPostDialog/>
         <PostCard />
     </>)
 

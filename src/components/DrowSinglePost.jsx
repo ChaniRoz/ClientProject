@@ -8,6 +8,9 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import EditPostDialog from './EditPost'
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -49,6 +52,10 @@ export default function PostCard() {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
+                <IconButton aria-label="delete a post">
+                    <DeleteIcon />
+                </IconButton>
+                <EditPostDialog/>
                 <ExpandMore
                     expand={expanded}
                     onClick={handleExpandClick}
@@ -58,6 +65,7 @@ export default function PostCard() {
                     <ExpandMoreIcon />
                 </ExpandMore>
             </CardActions>
+
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>
@@ -65,6 +73,7 @@ export default function PostCard() {
                     </Typography>
                 </CardContent>
             </Collapse>
+
         </Card>
     );
 }
