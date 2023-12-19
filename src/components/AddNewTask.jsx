@@ -7,9 +7,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
-import RecipeReviewCard from './DrowSingleTask'
+import RecipeReviewCard from './DrowSingleTask';
 
-export default function FormDialog() {
+export default function AddTaskDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -25,17 +25,17 @@ export default function FormDialog() {
     <React.Fragment>
       <Button onClick={handleClickOpen}>
       <IconButton variant="outlined" aria-label="add task">
-        <AddIcon />
+        <AddIcon/>
       </IconButton>
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Deteles</DialogTitle>
+        <DialogTitle>Add Now Task</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="new item"
+            label="new task"
             type="text"
             fullWidth
             variant="standard"
