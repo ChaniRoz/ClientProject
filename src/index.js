@@ -6,21 +6,24 @@ import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
-// import {Store}from './componentsLesson7/Store/Store'
-// const myStore = configureStore({
-//   reducer:{
-//     Store
-//   }
-// })
+import TaskSlice from './components/redux/Todoslice'
+import PostSlice from './components/redux/Postslice'
+
+const myStore = configureStore({
+  reducer: {
+    TaskSlice,
+    PostSlice
+  }
+})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    {/* <Provider store={Store}>  */}
-      <App />
-      {/* </Provider> */}
-      </BrowserRouter>
-   </React.StrictMode>
+      <Provider store={myStore}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
