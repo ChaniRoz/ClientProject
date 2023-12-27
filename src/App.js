@@ -5,7 +5,6 @@ import ResponsiveAppBar from './components/TopNuv'
 const App = () => {
   return (
     <>
-    <></>
       <ResponsiveAppBar />
     </>
   )

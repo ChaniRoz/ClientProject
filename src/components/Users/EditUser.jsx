@@ -6,10 +6,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add';
-import RecipeReviewCard from './DrowSingleTask'
+import EditIcon from '@mui/icons-material/Edit';
+import RecipeReviewCard from './DrowSingleUser'
 
-export default function AddPostDialog() {
+export default function EditUserDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -24,18 +24,18 @@ export default function AddPostDialog() {
   return (
     <React.Fragment>
       <Button onClick={handleClickOpen}>
-      <IconButton variant="outlined" aria-label="add task">
-        <AddIcon />
+      <IconButton variant="outlined" aria-label="add user">
+        <EditIcon />
       </IconButton>
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add New Post</DialogTitle>
+        <DialogTitle>Edit User</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="new post"
+            label="edit user"
             type="text"
             fullWidth
             variant="standard"

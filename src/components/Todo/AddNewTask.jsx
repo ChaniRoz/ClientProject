@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,26 +8,46 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
+import { Add } from '../redux/Todoslice';
 import RecipeReviewCard from './DrowSingleTask';
 
 export default function AddTaskDialog() {
+  const Tasks = useSelector((state) => state.TaskSlice.Task);
+  const [id, setId] = React.useState(0);
+  const [name, setName] = React.useState("");
+  const [createDate, setCreateDate] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
+  const Task = {
+    id,
+    name,
+    createDate,
+    textbox: false
+  }
+  const dispatch = useDispatch()
+
+  const handleCloseSave = () => {
+    setId(id + 1)
+    var today = new Date(),
+    date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+    setCreateDate(date)
+    dispatch(Add({ task: Task }))
+  };
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    <RecipeReviewCard/>
+    <RecipeReviewCard />
     setOpen(false);
   };
 
   return (
     <React.Fragment>
       <Button onClick={handleClickOpen}>
-      <IconButton variant="outlined" aria-label="add task">
-        <AddIcon/>
-      </IconButton>
+        <IconButton variant="outlined" aria-label="add task">
+          <AddIcon />
+        </IconButton>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Now Task</DialogTitle>
@@ -39,11 +60,12 @@ export default function AddTaskDialog() {
             type="text"
             fullWidth
             variant="standard"
+            onChange={(e) => setName(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Save</Button>
+          <Button onClick={handleCloseSave}>Save</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

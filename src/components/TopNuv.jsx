@@ -14,10 +14,10 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
 const LazyHome = React.lazy(() => import('./Home'))
-const LazyTodo = React.lazy(() => import('./Todo'))
-const LazyPost = React.lazy(() => import('./Post'))
-const LazyPhoto = React.lazy(() => import('./Photo'))
-const LazyUsers = React.lazy(() => import('./Users'))
+const LazyTodo = React.lazy(() => import('./Todo/Todo'))
+const LazyPost = React.lazy(() => import('./Post/Post'))
+const LazyPhoto = React.lazy(() => import('./Photo/Photo'))
+const LazyUsers = React.lazy(() => import('./Users/Users'))
 
 const pages = ['Home', 'Todo', 'Post', 'Photo', 'Users'];
 
