@@ -12,28 +12,29 @@ import { Add } from '../redux/Todoslice';
 import RecipeReviewCard from './DrowSingleTask';
 
 export default function AddTaskDialog() {
+  const [publicId, setPublicId] = React.useState(1)
   const Tasks = useSelector((state) => state.TaskSlice.Task);
-  const [id, setId] = React.useState(0);
+  const [id, setId] = React.useState("");
   const [name, setName] = React.useState("");
-  const [createDate, setCreateDate] = React.useState(0);
+  const [createDate, setCreateDate] = React.useState("");
+  const [checkbox, setCheckbox] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
   const Task = {
     id,
     name,
     createDate,
-    textbox: false
+    checkbox: false
   }
   const dispatch = useDispatch()
 
   const handleCloseSave = () => {
-    setId(id + 1)
-    var today = new Date(),
-    date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-    setCreateDate(date)
-    dispatch(Add({ task: Task }))
+    dispatch(Add({ task: Task, payload: Task }))
+    setOpen(false);
   };
   const handleClickOpen = () => {
+    setId(publicId)
+    setPublicId(publicId + 1)
     setOpen(true);
   };
 
@@ -41,7 +42,6 @@ export default function AddTaskDialog() {
     <RecipeReviewCard />
     setOpen(false);
   };
-
   return (
     <React.Fragment>
       <Button onClick={handleClickOpen}>
@@ -60,7 +60,12 @@ export default function AddTaskDialog() {
             type="text"
             fullWidth
             variant="standard"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value)
+              var today = new Date(),
+                date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+              setCreateDate(date)
+            }}
           />
         </DialogContent>
         <DialogActions>
