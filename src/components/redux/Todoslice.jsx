@@ -1,4 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import UseGet from '../../Hooks/GetHook'
+import UseDelete from '../../Hooks/DeleteHook';
+import UsePut from '../../Hooks/PutHook';
+import UsePost from '../../Hooks/PostHook';
+
 const initVal = {
     Task: []
 }
@@ -6,25 +11,27 @@ const TaskSlice = createSlice({
     name: "Task",
     initialState: initVal,
     reducers: {
+        Get: (state) => {
+            const [get, data] = UseGet();
+            get('https://localhost:7290/api/ToDo')
+            state.Task = data;
+        },
         Add: (state, actions) => {
-            state.Task.push(actions.payload.task)
+           // //state.Tasks=[...state.Tasks,actions.payload.Task]
+            // const Post = UsePost();
+            // Post('https://localhost:7290/api/ToDo',state.Task)
         },
         Delete: (state, actions) => {
-            state.Task = state.Task.filter((item) => {
-                return (actions.payload.id !== item.id)
-            });
+            const Delete = UseDelete();
+            Delete('https://localhost:7290/api/ToDo/api/DeleteToDos/' + actions.payload.id)
         },
         Edit: (state, actions) => {
-
-            state.Task.forEach(element => {
-                if (element.id === actions.payload.task.id) {
-                    element.titel = actions.payload.task.titel
-                    element.content = actions.payload.task.content
-                    element.time = actions.payload.task.time
-                }
-            });
+            //
+            // const [put, data] = UsePut();
+            // put('https://localhost:7290/api/ToDo' );
+            // state.Task = data;
         },
     }
 })
-export const { Add, Delete, Edit } = TaskSlice.actions
+export const { Get, Add, Delete, Edit } = TaskSlice.actions
 export default TaskSlice.reducer

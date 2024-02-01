@@ -8,8 +8,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
-import { Add } from '../redux/Todoslice';
-import RecipeReviewCard from './DrowSingleTask';
+import { Add } from '../redux/ToDoSlice';
+import TaskCard from './DrowSingleTask';
 
 export default function AddTaskDialog() {
   const [publicId, setPublicId] = React.useState(1)
@@ -29,20 +29,18 @@ export default function AddTaskDialog() {
   const dispatch = useDispatch()
 
   const handleCloseSave = () => {
-    dispatch(Add({ task: Task, payload: Task }))
+    dispatch(Add({task:Task, payload: Tasks }))
     setOpen(false);
   };
   const handleClickOpen = () => {
-    setId(publicId)
-    setPublicId(publicId + 1)
     setOpen(true);
   };
 
   const handleClose = () => {
-    <RecipeReviewCard />
+    <TaskCard />
     setOpen(false);
   };
-  return (
+  return (    
     <React.Fragment>
       <Button onClick={handleClickOpen}>
         <IconButton variant="outlined" aria-label="add task">
@@ -61,6 +59,8 @@ export default function AddTaskDialog() {
             fullWidth
             variant="standard"
             onChange={(e) => {
+              setId(publicId)
+              setPublicId(publicId + 1)
               setName(e.target.value)
               var today = new Date(),
                 date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
@@ -70,7 +70,9 @@ export default function AddTaskDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleCloseSave}>Save</Button>
+          <Button 
+          onClick={handleCloseSave}
+          >Save</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
