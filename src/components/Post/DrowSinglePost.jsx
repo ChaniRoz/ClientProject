@@ -51,6 +51,13 @@ export default function PostCard() {
                     some text
                 </Typography>
             </CardContent>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                    <Typography paragraph>
+                        more text
+                    </Typography>
+                </CardContent>
+            </Collapse>
             <CardActions disableSpacing>
                 <IconButton aria-label="delete a post">
                     <DeleteIcon />
@@ -66,13 +73,7 @@ export default function PostCard() {
                 </ExpandMore>
             </CardActions>
 
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                    <Typography paragraph>
-                        more text
-                    </Typography>
-                </CardContent>
-            </Collapse>
+
 
         </Card>
     );

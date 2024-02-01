@@ -14,12 +14,12 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
 const LazyHome = React.lazy(() => import('./Home'))
-const LazyTodo = React.lazy(() => import('./Todo/Todo'))
+const LazyToDo = React.lazy(() => import('./ToDo/ToDo'))
 const LazyPost = React.lazy(() => import('./Post/Post'))
 const LazyPhoto = React.lazy(() => import('./Photo/Photo'))
 const LazyUsers = React.lazy(() => import('./Users/Users'))
 
-const pages = ['Home', 'Todo', 'Post', 'Photo', 'Users'];
+const pages = ['Home', 'ToDo', 'Post', 'Photo', 'Users'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -88,7 +88,7 @@ function ResponsiveAppBar() {
       </AppBar>
       <Routes>
         <Route path="/Home" element={<Suspense fallback={<h1>loading...</h1>}><LazyHome /></Suspense>} ></Route>
-        <Route path="/Todo" element={<Suspense fallback={<h1>loading...</h1>}><LazyTodo /></Suspense>} ></Route>
+        <Route path="/ToDo" element={<Suspense fallback={<h1>loading...</h1>}><LazyToDo /></Suspense>} ></Route>
         <Route path="/Post" element={<Suspense fallback={<h1>loading...</h1>}><LazyPost /></Suspense>} ></Route>
         <Route path="/Photo" element={<Suspense fallback={<h1>loading...</h1>}><LazyPhoto /></Suspense>}></Route>
         <Route path="/Users" element={<Suspense fallback={<h1>loading...</h1>}><LazyUsers /></Suspense>} ></Route>
